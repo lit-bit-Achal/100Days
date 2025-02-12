@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Poetry</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love's Poetry Garden 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@400;600&family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff7eb6;
+            --gold: #ffd700;
+            --cream: #fff9f0;
+        }
+
+        body {
+            background: linear-gradient(45deg, #fff0f5, #ffe6e6);
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        /* Floating Cherry Blossoms */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%23ff7eb6" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/></svg>');
+            animation: petalFall 18s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes petalFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Animation */
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            perspective: 1000px;
+        }
+
+        .main-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 4rem;
+            color: var(--pink);
+            text-shadow: 2px 2px 4px rgba(255,126,182,0.2);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Poetry Card */
+        .poetry-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(255,126,182,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,126,182,0.1), 
+                transparent);
+            transition: 0.5s;
+        }
+
+        .poetry-card:hover::before {
+            left: 100%;
+        }
+
+        .poetry-text {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .date {
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--pink);
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--pink);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,126,182,0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,126,182,0.4);
+        }
+
+        /* Golden Highlight */
+        .highlight {
+            color: var(--pink);
+            text-shadow: 0 0 10px rgba(255,126,182,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .poetry-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Petals -->
+    <div class="petal" style="left: 10%; animation-delay: 0s"></div>
+    <div class="petal" style="left: 30%; animation-delay: 2s"></div>
+    <div class="petal" style="left: 50%; animation-delay: 4s"></div>
+    <div class="petal" style="left: 70%; animation-delay: 6s"></div>
+    <div class="petal" style="left: 90%; animation-delay: 8s"></div>
+
+    <a href="index.html" class="back-btn">← Back to Us</a>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">For My Beloved 🌸</h1>
+        </div>
+
+        <div class="poetry-card">
+            <p class="poetry-text">
+                <span class="highlight">Teri</span> khoobsurati ki baatein hai un-kahee,<br>  
+                <span class="highlight">Dil</span> ki dhadkanon mein basi ek kahaani.<br>  
+                <span class="highlight">Tere</span> honthon ki muskaan, tere aankhon ki chamak,<br>  
+                <span class="highlight">Har</span> ek nazar mein chhupi<br>  
+                <span class="highlight">Khwahish</span> hai ek naye afsaane ki. 💖
+            </p>
+            <p class="date">04 May 2024 🌸</p>
+        </div>
+    </div>
+
+    <script>
+        // Create additional petals
+        function createPetals() {
+            const container = document.body;
+            for(let i = 0; i < 20; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                container.appendChild(petal);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            createPetals();
+            
+            // Add smooth scroll
+            document.body.style.scrollBehavior = 'smooth';
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
