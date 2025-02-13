@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator 💞</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff7eb6;
+            --red: #ff3855;
+            --gold: #ffd700;
+        }
+
+        body {
+            background: linear-gradient(45deg, #fff0f5, #ffe6e6);
+            min-height: 100vh;
+            font-family: 'Comic Neue', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 8s infinite linear;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Calculator Container */
+        .love-calc {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255,126,182,0.2);
+            backdrop-filter: blur(10px);
+            width: 320px;
+            transform: scale(0);
+            animation: lovePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes lovePop {
+            to { transform: scale(1); }
+        }
+
+        /* Display Style */
+        #display {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: right;
+            padding: 10px;
+            border: 3px solid var(--pink);
+            border-radius: 15px;
+            font-family: 'Pacifico', cursive;
+            color: var(--red);
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Calculator Buttons */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.2s ease;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,126,182,0.3);
+        }
+
+        .number {
+            background: linear-gradient(45deg, #fff, #ffe6f4);
+            color: var(--red);
+        }
+
+        .operator {
+            background: linear-gradient(45deg, var(--pink), #ff9ec7);
+            color: white;
+        }
+
+        .equals {
+            background: linear-gradient(45deg, var(--red), #ff6b6b);
+            grid-column: span 2;
+            font-size: 1.8rem !important;
+        }
+
+        /* Funny Messages */
+        #message {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: var(--red);
+            min-height: 40px;
+            animation: textJump 0.8s infinite;
+        }
+
+        @keyframes textJump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .love-calc {
+                width: 90%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="heart">💖</div>
+    <div class="heart" style="left: 20%; animation-delay: 2s">💘</div>
+    <div class="heart" style="left: 70%; animation-delay: 5s">💝</div>
+
+    <div class="love-calc">
+        <input type="text" id="display" readonly placeholder="0 ❤️">
+        <div class="buttons">
+            <button class="operator" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="addToDisplay('💔')">💔</button>
+            <button class="operator" onclick="addToDisplay('÷')">÷</button>
+            <button class="operator" onclick="addToDisplay('×')">×</button>
+            
+            <button class="number" onclick="addToDisplay('7')">7</button>
+            <button class="number" onclick="addToDisplay('8')">8</button>
+            <button class="number" onclick="addToDisplay('9')">9</button>
+            <button class="operator" onclick="addToDisplay('-')">-</button>
+            
+            <button class="number" onclick="addToDisplay('4')">4</button>
+            <button class="number" onclick="addToDisplay('5')">5</button>
+            <button class="number" onclick="addToDisplay('6')">6</button>
+            <button class="operator" onclick="addToDisplay('+')">+</button>
+            
+            <button class="number" onclick="addToDisplay('1')">1</button>
+            <button class="number" onclick="addToDisplay('2')">2</button>
+            <button class="number" onclick="addToDisplay('3')">3</button>
+            <button class="number" onclick="addToDisplay('.')">.</button>
+            
+            <button class="number" onclick="addToDisplay('0')">0</button>
+            <button class="number" onclick="addToDisplay('00')">00</button>
+            <button class="equals" onclick="calculate()">= 💖</button>
+        </div>
+        <div id="message">Calculate our love! 💘</div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let message = document.getElementById('message');
+        let messages = [
+            "Our love = ∞!",
+            "You + Me = Forever 💞",
+            "Math can't measure us!",
+            "Result: Soulmates!",
+            "Better than 1+1=3 ",
+            "Love quotient: 1000%!",
+        ];
+
+        function addToDisplay(value) {
+            // Heart button easter egg
+            if(value === '💔') {
+                display.value = "💔 → ❤️";
+                message.textContent = "Never broken! Always fixed! 💘";
+                return;
+            }
+            
+            display.value = display.value === '0 ❤️' ? value : display.value + value;
+            
+            // Random funny messages
+            if(Math.random() > 0.7) {
+                message.textContent = messages[Math.floor(Math.random() * messages.length)];
+            }
+        }
+
+        function clearDisplay() {
+            display.value = '0 ❤️';
+            message.textContent = "Fresh start! New love! 💖";
+        }
+
+        function calculate() {
+            try {
+                let expression = display.value
+                    .replace(/×/g, '*')
+                    .replace(/÷/g, '/')
+                    .replace(/💔/g, '0') // Convert broken heart to 0
+                    .replace(/[^0-9\.\+\-\*\/]/g, ''); // Remove non-math characters
+
+                let result = eval(expression);
+                
+                // Romantic results
+                if(result === 520) { // 520 = "I love you" in Chinese
+                    result = "I Love You! 💖";
+                } else if(result === 143) { // 143 = I love you
+                    result = "I Love You! 💞";
+                }
+                
+                display.value = result;
+                message.textContent = "You + Me = Forever! ";
+                
+                // Confetti effect
+                for(let i = 0; i < 20; i++) {
+                    createHeart();
+                }
+            } catch(error) {
+                display.value = "Error 💔";
+                message.textContent = "Even errors can't break us! 💪";
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 8000);
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
