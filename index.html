@@ -4,7 +4,78 @@
   <meta charset="UTF-8">
   <title>100 Reasons</title>
   <a href="poetry.html" class="poetry-button">Poetry</a>
+<!-- Add this to your index.html -->
+<a href="calculator.html" class="calc-btn">
+    <i class="fas fa-calculator"></i>
+</a>
 
+<!-- Add Font Awesome CSS if not already present -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* Existing Poetry Button */
+.poetry-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* keep existing poetry button styles */
+}
+
+/* New Calculator Button */
+.calc-btn {
+    position: fixed;
+    top: 70px; /* Positioned below poetry button */
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, #ffd700, #ffd900);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.calc-btn i {
+    color: #fff;
+    font-size: 1.4rem;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+/* Hover Effects */
+.calc-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.3);
+    background: linear-gradient(45deg, #ffd900, #ffd700);
+}
+
+.calc-btn:hover i {
+    animation: calcBounce 0.6s ease;
+}
+
+@keyframes calcBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .calc-btn {
+        top: 65px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .calc-btn i {
+        font-size: 1.2rem;
+    }
+}
+</style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
