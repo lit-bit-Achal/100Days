@@ -3,7 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Poetry</title>
+  <!-- Add this to your HTML -->
+<div class="simple-love-container">
+  <a href="letter.html" class="simple-button">💌 Love Letter</a>
+  <div class="simple-timer" id="simpleTimer">20:00:00</div>
+</div>
+
+<style>
+.simple-love-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  text-align: center;
+}
+
+.simple-button {
+  display: block;
+  padding: 12px 25px;
+  background: #ff4081;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.simple-timer {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #ff4081;
+  font-weight: bold;
+  background: rgba(255,255,255,0.9);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+</style>
+
+<script>
+function startSimpleTimer() {
+  let timer = 20 * 60 * 60; // 20 hours in seconds
+  const display = document.getElementById('simpleTimer');
   
+  const timerInterval = setInterval(() => {
+    const hours = Math.floor(timer / 3600);
+    const minutes = Math.floor((timer % 3600) / 60);
+    const seconds = timer % 60;
+    
+    display.textContent = 
+      `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    if (--timer < 0) {
+      clearInterval(timerInterval);
+      display.textContent = "00:00:00";
+    }
+  }, 1000);
+}
+
+window.onload = startSimpleTimer;
+</script>
 
 </head>
 <body>
