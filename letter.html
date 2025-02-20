@@ -205,6 +205,44 @@
 </body>
 </html>
 <!-- partial -->
-  
+  <style>
+.emoji-trail {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    animation: fadeUp 1s forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(0.5);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('mousemove', (e) => {
+    const emoji = document.createElement('div');
+    emoji.className = 'emoji-trail';
+    emoji.textContent = '💛';
+    
+    // Position the emoji at mouse coordinates
+    emoji.style.left = e.clientX + 'px';
+    emoji.style.top = e.clientY + 'px';
+    
+    document.body.appendChild(emoji);
+    
+    // Remove element after animation
+    emoji.addEventListener('animationend', () => {
+        emoji.remove();
+    });
+});
+</script>  
 </body>
 </html>
