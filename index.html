@@ -392,6 +392,12 @@ document.addEventListener('mousemove', (e) => {
                 document.body.appendChild(emoji);
                 
                 emoji.addEventListener('animationend', () => emoji.remove());
-            });</script>  
+            });
+  // Create 50 magic dust particles
+            for(let i = 0; i < 50; i++) {
+                createMagicDust();
+            }
+        });
+</script>  
 </body>
 </html>
