@@ -183,7 +183,121 @@
             50% { transform: translateY(-20px) rotate(10deg); }
             100% { transform: translateY(0) rotate(0deg); }
         }
+      <!-- Add this HTML where you want the console icon to appear (usually at bottom-right) -->
+<div class="console-icon" onclick="navigateToGame()">
+    <div class="console-lid"></div>
+    <div class="console-body">
+        <span class="screen"></span>
+        <div class="buttons">
+            <div class="power-light"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Console Icon Styles */
+.console-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50px;
+    height: 40px;
+}
+
+.console-body {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    background: #2c2c2c;
+    border-radius: 8px;
+    bottom: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.console-lid {
+    position: absolute;
+    width: 110%;
+    height: 30%;
+    background: #363636;
+    top: 0;
+    left: -5%;
+    border-radius: 4px 4px 0 0;
+    transform: perspective(10px) rotateX(2deg);
+}
+
+.screen {
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    background: #1a1a1a;
+    left: 20%;
+    top: 20%;
+    border-radius: 2px;
+    animation: screen-glow 2s infinite;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: flex;
+    gap: 3px;
+}
+
+.power-light {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    animation: power-pulse 1.5s infinite;
+}
+
+@keyframes screen-glow {
+    0% { box-shadow: 0 0 5px rgba(0,255,0,0.2); }
+    50% { box-shadow: 0 0 10px rgba(0,255,0,0.5); }
+    100% { box-shadow: 0 0 5px rgba(0,255,0,0.2); }
+}
+
+@keyframes power-pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.console-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.console-icon:active {
+    transform: translateY(0) scale(0.95);
+}
+</style>
+
+<script>
+function navigateToGame() {
+    // Add click animation
+    const icon = document.querySelector('.console-icon');
+    icon.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        icon.style.transform = '';
+    }, 200);
     
+    // Navigate after animation
+    setTimeout(() => {
+        window.location.href = 'game.html';
+    }, 300);
+}
+
+// Optional: Add keyboard shortcut (Shift+G)
+document.addEventListener('keydown', (e) => {
+    if (e.shiftKey && e.key.toLowerCase() === 'g') {
+        navigateToGame();
+    }
+});
+</script>    
           </style>
 </head>
 <body>
