@@ -51,3 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateCanvasHeight);
     updateCanvasHeight();
 });
+<script>
+document.addEventListener('mousemove', (e) => {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji-trail';
+                emoji.textContent = ['❤️', '🌹', '😘', '✨'][Math.floor(Math.random()*4)];
+                emoji.style.left = `${e.clientX}px`;
+                emoji.style.top = `${e.clientY}px`;
+                document.body.appendChild(emoji);
+                
+                emoji.addEventListener('animationend', () => emoji.remove());
+            });
+  
+</script>
