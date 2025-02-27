@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>100 Reasons</title>
+  <a href="poetry.html" class="poetry-button">Poetry</a>
+<!-- Add this to your index.html -->
+<a href="calculator.html" class="calc-btn">
+    <i class="fas fa-calculator"></i>
+</a>
+
+<!-- Add Font Awesome CSS if not already present -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* Existing Poetry Button */
+.poetry-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* keep existing poetry button styles */
+}
+
+/* New Calculator Button */
+.calc-btn {
+    position: fixed;
+    top: 70px; /* Positioned below poetry button */
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, #ffd700, #ffd900);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.calc-btn i {
+    color: #fff;
+    font-size: 1.4rem;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+/* Hover Effects */
+.calc-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.3);
+    background: linear-gradient(45deg, #ffd900, #ffd700);
+}
+
+.calc-btn:hover i {
+    animation: calcBounce 0.6s ease;
+}
+
+@keyframes calcBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .calc-btn {
+        top: 65px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .calc-btn i {
+        font-size: 1.2rem;
+    }
+}
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>100 Days of Love - [Her Name]</title>
+    <style>
+        /* ==== CORE STYLES ==== */
+        :root {
+            --love-1: #ff007f; --love-2: #ff69b4; --love-3: #ff1493;
+            --bg: linear-gradient(45deg, #fff5f5 0%, #ffe8f5 100%);
+            --text: #4a2a38; --shadow: 0 10px 40px -10px rgba(255,0,127,0.3);
+        }
+
+        body {
+            font: 1.1rem/1.6 'Segoe UI', system-ui;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            background: linear-gradient(45deg, var(--love-1), var(--love-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: loveFlow 8s ease infinite;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes loveFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes heartbeat {
+            0%,100% { transform: scale(1); }
+            15% { transform: scale(1.03); }
+            30% { transform: scale(0.97); }
+            45% { transform: scale(1.08); }
+        }
+
+        /* === TODAY'S REASON === */
+        #todays-reason {
+            background: linear-gradient(145deg, #fff, #fff8fb);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px 0;
+            animation: heartbeat 2.5s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* === TIMELINE === */
+        .timeline-entry {
+            background: rgba(255,255,255,0.9);
+            border-left: 4px solid var(--love-2);
+            margin: 15px 0;
+            padding: 10px;
+            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+      .poetry-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.poetry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+}
+
+        /* === FLOATING EMOJIS === */
+        .floating-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+      <!-- Add this HTML where you want the console icon to appear (usually at bottom-right) -->
+<div class="console-icon" onclick="navigateToGame()">
+    <div class="console-lid"></div>
+    <div class="console-body">
+        <span class="screen"></span>
+        <div class="buttons">
+            <div class="power-light"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Console Icon Styles */
+.console-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50px;
+    height: 40px;
+}
+
+.console-body {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    background: #2c2c2c;
+    border-radius: 8px;
+    bottom: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.console-lid {
+    position: absolute;
+    width: 110%;
+    height: 30%;
+    background: #363636;
+    top: 0;
+    left: -5%;
+    border-radius: 4px 4px 0 0;
+    transform: perspective(10px) rotateX(2deg);
+}
+
+.screen {
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    background: #1a1a1a;
+    left: 20%;
+    top: 20%;
+    border-radius: 2px;
+    animation: screen-glow 2s infinite;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: flex;
+    gap: 3px;
+}
+
+.power-light {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    animation: power-pulse 1.5s infinite;
+}
+
+@keyframes screen-glow {
+    0% { box-shadow: 0 0 5px rgba(0,255,0,0.2); }
+    50% { box-shadow: 0 0 10px rgba(0,255,0,0.5); }
+    100% { box-shadow: 0 0 5px rgba(0,255,0,0.2); }
+}
+
+@keyframes power-pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.console-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.console-icon:active {
+    transform: translateY(0) scale(0.95);
+}
+</style>
+
+<script>
+function navigateToGame() {
+    // Add click animation
+    const icon = document.querySelector('.console-icon');
+    icon.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        icon.style.transform = '';
+    }, 200);
+    
+    // Navigate after animation
+    setTimeout(() => {
+        window.location.href = 'game.html';
+    }, 300);
+}
+
+// Optional: Add keyboard shortcut (Shift+G)
+document.addEventListener('keydown', (e) => {
+    if (e.shiftKey && e.key.toLowerCase() === 'g') {
+        navigateToGame();
+    }
+});
+</script>    
+          </style>
+</head>
+<body>
+    <!-- Floating Emojis Container -->
+    <div id="floating-emojis"></div>
+
+    <!-- Main Content -->
+    <h1>💖 100 Days, 100 Reasons I Love You 💖</h1>
+    
+    <!-- Today's Reason -->
+    <div id="todays-reason">
+        <h2>🎀 Today's Special Reason 🎀</h2>
+        <h3>Day <span id="currentDay">1</span> - <span id="currentDate">February 8, 2025</span></h3> 
+        <p>"💞 Coz you are career anxious🥹 💞"</p>
+    </div> 
+
+    <!-- Timeline -->
+    <div id="timeline">
+        <div class="timeline-entry">
+            <h3>Day 1 - February 1, 2025</h3>
+            <p>💝Coz you are my favourite singer in this universe!! </p>
+        </div>
+      <div class="timeline-entry">
+    <h3>Day 2 - February 2, 2025</h3>
+    <p>💝The way you say Hawwww🫢/Yaarr☺️ </p>
+</div>
+       <div class="timeline-entry">
+    <h3>Day 3 - February 3, 2025</h3>
+    <p>💝The way you try hard to irriate me!! </p>
+</div>
+      <div class="timeline-entry">
+    <h3>Day 4 - February 4, 2025</h3>
+    <p>💝The way you show care to an idiot like me!! </p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 5 - February 5, 2025</h3>
+    <p>💝The way you talk, the way you smile, the way get nervous!! </p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 6 - February 6, 2025</h3>
+    <p>💝The way you calm me down at my lowest!!</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 7 - February 7, 2025</h3>
+    <p>💝Coz your smile makes me smile harder🤭</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 8 - February 8, 2025</h3>
+    <p>💝The way you rant when you are annoyed🤪</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 9 - February 9, 2025</h3>
+    <p>💝The way you scold me when I say stupid things about myself🥹</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 10 - February 10, 2025</h3>
+    <p>💝The way you share your problems and make it look like its nothing🥹</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 11 - February 11, 2025</h3>
+    <p>💝Coz you are my safe space; you allow me to get vulnerable around you🫂</p>
+</div> 
+       <div class="timeline-entry">
+      <h3>Day 12 - February 12, 2025</h3>
+    <p>💝Your Oversmartness🥰</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 13 - February 13, 2025</h3>
+    <p>💝Your Height🫣</p> 
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 14 - February 14, 2025</h3>
+    <p>💝Your perfection towards every single thing🫠</p>
+</div> 
+      <div class="timeline-entry">
+      <h3>Day 15 - February 15, 2025</h3>
+    <p>💝Kisi bhi bkl ki baaton mai nahi aati🫂</p>
+</div>
+       <div class="timeline-entry">
+      <h3>Day 16 - February 16, 2025</h3>
+    <p>💝Your subtle reaction to all my shayaris/poetries!!!✍️</p>
+</div>
+      <div class="timeline-entry">
+      <h3>Day 17 - February 17, 2025</h3>
+    <p>💝When you ask physics question🫣</p>        
+</div>
+       <div class="timeline-entry">
+      <h3>Day 18 - February 18, 2025</h3>
+    <p>💝Your art🫶</p>        
+</div>    
+      <div class="timeline-entry">
+      <h3>Day 19 - February 19, 2025</h3>
+    <p>💝Your storytelling😗</p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 20 - February 20, 2025</h3>
+    <p>💝Your rudeness😗</p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 21 - February 21, 2025</h3>
+    <p>💝Your kindness/care for me😍</p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 22 - February 22, 2025</h3>
+    <p>💝Your efforts towards everything😉 </p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 23 - February 23, 2025</h3>
+    <p>💝Coz you bring life to my poetries🫠 </p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 24 - February 24, 2025</h3>
+    <p>💝Your nibbi-ness😍 </p>        
+</div>
+      <div class="timeline-entry">
+      <h3>Day 25 - February 25, 2025</h3>
+    <p>💝Your voice🫠 </p>        
+</div>
+       <div class="timeline-entry">
+      <h3>Day 26 - February 26, 2025</h3>
+    <p>💝Your Nakhre😍 </p>        
+</div>  
+      <div class="timeline-entry">
+      <h3>Day 27 - February 27, 2025</h3>
+    <p>💝Coz you are career anxious🥹 </p>        
+</div>
+      <!-- Add more entries up to Day 100 -->
+    </div>
+
+    <footer>
+        <p>Every passing day with you gives me a new reason to love you more and more MAALKIN JI💛</p>
+      <p> Forever Yours, </p>
+      <p> Achaluuu😶🥹 </p>
+    </footer>
+
+    <script>
+        // ==== MAIN SCRIPT ====
+        document.addEventListener('DOMContentLoaded', () => {
+            // Date Calculations
+            const startDate = new Date('2025-02-01');
+            const currentDate = new Date();
+            const dayNumber = Math.min(Math.floor((currentDate - startDate) / 86400000) + 1, 100);
+
+            // Update Header
+            document.getElementById('currentDay').textContent = dayNumber;
+            document.getElementById('currentDate').textContent = 
+                currentDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            // Floating Emojis
+            const emojis = ['💖', '🌸', '😭', '😶', '💌', '🌹', '🌻','😘','🥰','😇','💛'];
+            const container = document.getElementById('floating-emojis');
+            
+            for(let i = 0; i < 50; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.top = `${Math.random() * 100}%`;
+                emoji.style.animationDuration = `${5 + Math.random() * 10}s`;
+                emoji.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(emoji);
+            }
+
+            // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.timeline-entry').forEach(entry => {
+                entry.style.opacity = 0;
+                entry.style.transform = 'translateY(20px)';
+                observer.observe(entry);
+            });
+
+            // Hover Effects
+            document.querySelectorAll('.timeline-entry').forEach(entry => {
+                entry.addEventListener('mouseover', () => {
+                    entry.style.transform = 'scale(1.02) rotate(1deg)';
+                });
+                entry.addEventListener('mouseout', () => {
+                    entry.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  <style>
+.emoji-trail {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    animation: fadeUp 1s forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(0.5);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('mousemove', (e) => {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji-trail';
+                emoji.textContent = ['🎀', '💖', '🌸', '✨'][Math.floor(Math.random()*4)];
+                emoji.style.left = `${e.clientX}px`;
+                emoji.style.top = `${e.clientY}px`;
+                document.body.appendChild(emoji);
+                
+                emoji.addEventListener('animationend', () => emoji.remove());
+            });
+  
+</script>  
+</body>
+</html>
