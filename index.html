@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" >
+  <!-- Beating Heart Button -->
+<div class="heart-container">
+    <div class="heart-btn" id="heartButton">❤️</div>
+</div>
 <head>
   <meta charset="UTF-8">
   <title>100 Reasons</title>
@@ -195,6 +199,64 @@
 </div>
 
 <style>
+      /* Heart Button Styles */
+.heart-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.heart-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #ff3b3b, #ff1a1a);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 59, 59, 0.3);
+    animation: beat 1.2s infinite alternate;
+    transition: all 0.3s ease;
+    font-size: 28px;
+    color: white;
+    border: none;
+}
+
+.heart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(255, 59, 59, 0.4);
+    animation: none;
+}
+
+@keyframes beat {
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* Click Ripple Effect */
+.heart-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: ripple 1s infinite;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
 /* Console Icon Styles */
 .console-icon {
     position: fixed;
@@ -311,7 +373,7 @@ document.addEventListener('keydown', (e) => {
     <div id="todays-reason">
         <h2>🎀 Today's Special Reason 🎀</h2>
         <h3>Day <span id="currentDay">1</span> - <span id="currentDate">February 8, 2025</span></h3> 
-        <p>"💞 Coz you are career anxious🥹 💞"</p>
+        <p>"💞 Coz you do babu shona with me😍 💞"</p>
     </div> 
 
     <!-- Timeline -->
@@ -424,6 +486,10 @@ document.addEventListener('keydown', (e) => {
       <h3>Day 27 - February 27, 2025</h3>
     <p>💝Coz you are career anxious🥹 </p>        
 </div>
+      <div class="timeline-entry">
+      <h3>Day 28 - February 28, 2025</h3>
+    <p>💝Coz you do babu shona with me😍 </p>        
+</div>
       <!-- Add more entries up to Day 100 -->
     </div>
 
@@ -434,6 +500,27 @@ document.addEventListener('keydown', (e) => {
     </footer>
 
     <script>
+      // Heart Button Functionality
+const heartButton = document.getElementById('heartButton');
+
+heartButton.addEventListener('click', () => {
+    // Add click animation
+    heartButton.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        heartButton.style.transform = 'scale(1)';
+    }, 200);
+    
+    // Add temporary glow effect
+    heartButton.style.boxShadow = '0 0 25px rgba(255, 59, 59, 0.6)';
+    setTimeout(() => {
+        heartButton.style.boxShadow = '0 8px 25px rgba(255, 59, 59, 0.3)';
+    }, 500);
+    
+    // Redirect after animation
+    setTimeout(() => {
+        window.location.href = 'love.html';
+    }, 800);
+});
         // ==== MAIN SCRIPT ====
         document.addEventListener('DOMContentLoaded', () => {
             // Date Calculations
