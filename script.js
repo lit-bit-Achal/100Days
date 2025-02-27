@@ -50,3 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.play();
     });
 });
+// Add this to script.js
+function updateCanvasHeight() {
+    const canvas = document.getElementById('particles');
+    const body = document.body;
+    canvas.style.height = body.scrollHeight + 'px';
+}
+
+// Update on load and resize
+window.addEventListener('load', updateCanvasHeight);
+window.addEventListener('resize', updateCanvasHeight);
+
+// Update when animations might change height
+setTimeout(updateCanvasHeight, 1000);
