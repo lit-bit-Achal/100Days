@@ -1,66 +1,88 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize particles
-    particlesJS('particles', {
-        particles: {
-            number: { value: 80 },
-            color: { value: '#ffffff' },
-            shape: { type: 'circle' },
-            opacity: { value: 0.5 },
-            size: { value: 3 },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: 'none',
-                random: false,
-                straight: false,
-                out_mode: 'out',
-                bounce: false,
-            }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: {
-                onhover: { enable: true, mode: 'repulse' },
-                onclick: { enable: true, mode: 'push' },
-                resize: true
-            }
-        },
-        retina_detect: true
-    });
+function init() { 
+  const catWrapper = document.querySelector('.cat_wrapper')
+  const wrapper = document.querySelector('.wrapper')
+  const cat = document.querySelector('.cat')
+  const head = document.querySelector('.cat_head')
+  const legs = document.querySelectorAll('.leg')
+  const pos = {
+    x: null,
+    y: null
+  }
 
-    // Text animations
-    const animateElements = document.querySelectorAll('.animate-text');
-    animateElements.forEach((el, index) => {
-        setTimeout(() => el.style.animation = 'fadeInUp 0.8s forwards', index * 300);
-    });
+  const walk = () =>{
+    cat.classList.remove('first_pose')
+    legs.forEach(leg=>leg.classList.add('walk'))
+  }
 
-    // Signature animations
-    setTimeout(() => {
-        document.querySelector('.forever-text').style.animation = 'fadeInRight 1s forwards';
-    }, 3500);
+  const handleMouseMotion = e =>{
+    pos.x = e.clientX
+    pos.y = e.clientY
+    walk()
+  }
 
-    setTimeout(() => {
-        document.querySelector('.animated-signature').style.animation = 'signatureStroke 2s forwards';
-    }, 4000);
+  const handleTouchMotion = e =>{
+    if (!e.targetTouches) return
+    pos.x = e.targetTouches[0].offsetX
+    pos.y = e.targetTouches[0].offsetY
+    walk()
+  }
 
-    // Dynamic canvas height
-    function updateCanvasHeight() {
-        const canvas = document.getElementById('particles');
-        canvas.style.height = document.documentElement.scrollHeight + 'px';
+  const turnRight = () =>{
+    cat.style.left = `${pos.x - 90}px`
+    cat.classList.remove('face_left')
+    cat.classList.add('face_right')
+  }
+
+  const turnLeft = () =>{
+    cat.style.left = `${pos.x + 10}px`
+    cat.classList.remove('face_right')
+    cat.classList.add('face_left')
+  }
+
+  const decideTurnDirection = () =>{
+    cat.getBoundingClientRect().x < pos.x ?
+      turnRight()
+      :
+      turnLeft()
+  }
+
+  const headMotion = () =>{
+    pos.y > (wrapper.clientHeight - 100) ?
+      head.style.top = '-15px'
+      :
+      head.style.top = '-30px'
+  }
+
+  const jump = () =>{
+    catWrapper.classList.remove('jump')
+    if (pos.y < (wrapper.clientHeight - 250)) {
+      setTimeout(()=>{
+        catWrapper.classList.add('jump')
+      },100)
+    } 
+  }
+
+  const decideStop = ()=>{
+    if (cat.classList.contains('face_right') && pos.x - 90 === cat.offsetLeft ||
+        cat.classList.contains('face_left') && pos.x + 10 === cat.offsetLeft) {
+      legs.forEach(leg=>leg.classList.remove('walk'))    
     }
-    window.addEventListener('resize', updateCanvasHeight);
-    updateCanvasHeight();
-});
-<script>
-document.addEventListener('mousemove', (e) => {
-                const emoji = document.createElement('div');
-                emoji.className = 'emoji-trail';
-                emoji.textContent = ['❤️', '🌹', '😘', '✨'][Math.floor(Math.random()*4)];
-                emoji.style.left = `${e.clientX}px`;
-                emoji.style.top = `${e.clientY}px`;
-                document.body.appendChild(emoji);
-                
-                emoji.addEventListener('animationend', () => emoji.remove());
-            });
+  }
   
-</script>
+  setInterval(()=>{
+    if (!pos.x || !pos.y) return
+    decideTurnDirection()
+    headMotion()
+    decideStop()
+  },100)
+
+  setInterval(()=>{
+    if (!pos.x || !pos.y) return
+    jump()
+  },1000)
+
+  document.addEventListener('mousemove', handleMouseMotion)
+  document.addEventListener('mousemove', handleTouchMotion)
+}
+
+window.addEventListener('DOMContentLoaded', init)

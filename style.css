@@ -1,158 +1,297 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffaaaa);
-    min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #63ec85;
 }
 
-#particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+.outer_wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.container {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-    padding-bottom: 100px;
+.wrapper {
+  position: absolute;
+  height: calc(100vh - 100px);
+  width: 100%;
+  top: 0;
 }
 
-.love-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-    transform: translateY(0);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow: hidden;
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(1, 143, 96);
 }
 
-.love-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+.cat {
+  position: absolute;
+  bottom: 65px;
+  left: 100px;
+  height: 30px;
+  width: 60px;
+  transition: 1.5s;
+  transform-origin: center;
+  background-color: transparent;
 }
 
-.card-header {
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-    padding: 2rem;
-    text-align: center;
+/* body */
+
+.body {
+  position: absolute;
+  height: 30px;
+  width: 60px;
 }
 
-.card-header h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+.face_left .body { 
+  animation: turn_body_left forwards 0.5s;
 }
 
-.card-body {
-    padding: 3rem;
+@keyframes turn_body_left {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(0.5, 1); }
 }
 
-.letter-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #444;
+.face_right .body {
+  animation: turn_body_right forwards 0.5s;
 }
 
-.animate-text {
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
+@keyframes turn_body_right {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(0.5, 1); }
 }
 
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
+/* head */
+.cat_head {
+  position: absolute;
+  height: 40px;
+  width: 48px;
+  right: -10px;
+  top: -30px;
+  transition: 0.5s;
+  z-index: 50;
 }
 
-/* Signature Effects */
-.signature-container {
-    margin-top: 4rem;
-    position: relative;
-    opacity: 0;
-    animation: signatureEntrance 2s 3s forwards;
+.first_pose .cat_head,
+.face_left .cat_head{ 
+  right: 22px;
 }
 
-@keyframes signatureEntrance {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+
+/* tail */
+.tail {
+  position: absolute;
+  top: -25px;
+  height: 36px;
+  width: 15px;
+  animation: tail_motion forwards 2s;
+  transform-origin: bottom right;
 }
 
-.forever-yours {
-    text-align: right;
-    position: relative;
-    padding-right: 30px;
+@keyframes tail_motion {
+  0%,100% { 
+    left: -5px;
+    transform: rotate(0deg) scale(1); 
+  }
+  50% { 
+    left: -10px;
+    transform: rotate(-50deg) scale(-1,1); 
+  }
 }
 
-.forever-text {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.2rem;
-    color: #ff6b6b;
-    display: block;
-    margin-bottom: -15px;
-    opacity: 0;
-    animation: fadeInRight 1s 3.5s forwards;
+.first_pose .tail ,
+.face_left .tail {
+  left: 45px;
+  animation: tail_motion_alt forwards 2s;
 }
 
-.signature-box {
-    display: inline-block;
-    position: relative;
+@keyframes tail_motion_alt {
+  0%,100% { 
+    left: 45px;
+    transform: rotate(0deg) scale(1); 
+  }
+  50% { 
+    left: 40px;
+    transform: rotate(50deg) scale(-1,1); 
+  }
 }
 
-.animated-signature {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
-    color: #ff3b3b;
-    position: relative;
-    z-index: 2;
-    margin-top: 10px;
-    opacity: 0;
-    animation: signatureStroke 2s 4s forwards;
+
+
+/* legs */
+.leg {
+  position: absolute;
+  height: 20px;
+  width: 10px;
+  transform-origin: top center;
 }
 
-.ink-blot {
-    position: absolute;
-    width: 150px;
-    height: 60px;
-    background: rgba(255, 59, 59, 0.1);
-    right: -20px;
-    top: -10px;
-    border-radius: 50%;
-    filter: blur(15px);
-    z-index: 1;
-    animation: inkSpread 2s 4s forwards;
+.front_legs,
+.back_legs {
+  position: absolute;
+  height: 30px;
+  transition: 0.7s;
 }
 
-@keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
+.front_legs {
+  width: 30px;
+  right: 0;
 }
 
-@keyframes signatureStroke {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+.back_legs {
+  width: 25px;
+  left: 0; 
 }
 
-@keyframes inkSpread {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 0.3; }
+.face_left .leg svg {
+  transform: scale(-1,1);
 }
 
-@media (max-width: 768px) {
-    .love-card { margin: 1rem; }
-    .card-header h1 { font-size: 2.5rem; }
-    .card-body { padding: 2rem; }
-    .animated-signature { font-size: 2.8rem; }
+.face_right .front_legs{ right: 0; }
+
+.first_pose .front_legs,
+.face_left .front_legs{ right: 30px; }
+
+.face_right .back_legs{ left: 0; }
+
+.first_pose .back_legs,
+.face_left .back_legs{ left: 35px; }
+
+.one,
+.three  {
+  bottom: -15px;
+  right: 0;
+}
+
+.two, 
+.four {
+  bottom: -15px;
+  left: 0px;
+}
+
+.one.walk, 
+.three.walk {
+  animation: infinite 0.3s walk;
+}
+
+.two.walk, 
+.four.walk {
+  animation: infinite 0.3s walk_alt;
+}
+
+@keyframes walk {
+  0%,100% {transform: rotate(-10deg);}
+  50% {transform: rotate(10deg);}
+}
+
+@keyframes walk_alt {
+  0%,100% {transform: rotate(10deg);}
+  50% {transform: rotate(-10deg);}
+}
+
+
+/* jump */
+.cat_wrapper {
+  position: absolute;
+  bottom: 0;
+}
+
+.cat_wrapper.jump .one { 
+  animation: infinite 0.3s walk;
+}
+
+.cat_wrapper.jump .two { 
+  animation: infinite 0.3s walk_alt;
+}
+
+.cat_wrapper.jump .three,
+.cat_wrapper.jump .four {
+  animation: none;
+}
+
+.cat_wrapper.jump .cat.face_right .back_legs {
+  transform-origin: center;
+  transform: rotate(50deg);
+}
+
+.cat_wrapper.jump .cat.face_left .back_legs {
+  transform-origin: center;
+  transform: rotate(-50deg);
+}
+
+.cat_wrapper.jump .cat.face_right .front_legs {
+  transform-origin: center;
+  transform: rotate(-60deg);
+}
+
+.cat_wrapper.jump .cat.face_left .front_legs {
+  transform-origin: center;
+  transform: rotate(60deg);
+}
+
+.cat_wrapper.jump{
+  animation: jump forwards 1s;
+}
+
+@keyframes jump {
+  0%, 100%  {bottom: 0px;}
+  50% {bottom: 200px;}
+}
+
+.jump .face_left{ 
+  animation: forwards 0.5s body_stand_left;
+  transform-origin: right bottom;
+}
+
+.jump .face_right{ 
+  animation: forwards 0.5s body_stand_right;
+  transform-origin: left bottom;
+}
+
+@keyframes body_stand_right {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(-45deg);}
+}
+
+@keyframes body_stand_left {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(45deg);}
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
+
+polygon.eyes {
+  fill: rgb(1, 143, 96);
+}
+
+polygon,
+path {
+  fill: white;
+}
+
+.sign {
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  right: 10px;
+  font-size: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
