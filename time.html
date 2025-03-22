@@ -6,6 +6,48 @@
   
 
 </head>
+<style>
+.cat-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #ff9ad5;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 154, 213, 0.4);
+}
+
+.cat-button:hover {
+    background-color: #ff7ebc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 126, 188, 0.5);
+}
+
+.cat-button:active {
+    transform: translateY(0);
+}
+
+.cat-logo {
+    font-size: 24px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.cat-button:hover .cat-logo {
+    transform: rotate(15deg) scale(1.1);
+}
+</style>
+
+<a href="cat.html" class="cat-button">
+    <span class="cat-logo">🐱</span>
+    Meet Our Cats
+</a>
 <body>
 <!-- partial:index.partial.html -->
 <!DOCTYPE html>
