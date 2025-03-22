@@ -4,6 +4,162 @@
 <div class="heart-container">
     <div class="heart-btn" id="heartButton">❤️</div>
 </div>
+  <!-- Add this to your website -->
+<a href="time.html" class="love-counter-link">
+  <div class="love-counter">
+    <div class="counter-header">
+      <span class="heart">💖</span>
+      <h2>Our Time Together</h2>
+    </div>
+    <div class="time-grid" id="timer"></div>
+  </div>
+</a>
+
+<style>
+.love-counter-link {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  transform: scale(0.8);
+  transform-origin: top left;
+  z-index: 1000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.love-counter-link:hover {
+  transform: scale(0.82);
+  filter: brightness(1.05);
+}
+
+.love-counter-link:active {
+  transform: scale(0.78);
+}
+
+.love-counter {
+  background: #fff5f9;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Helvetica Neue', sans-serif;
+  border: 1px solid #ffdde9;
+}
+
+.counter-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.heart {
+  font-size: 1.2em;
+  animation: gentle-pulse 1.2s infinite;
+}
+
+h2 {
+  margin: 0;
+  color: #ff6b8d;
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.time-unit {
+  text-align: center;
+  padding: 4px;
+  background: white;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+  min-width: 50px;
+}
+
+.time-unit:hover {
+  transform: translateY(-2px);
+}
+
+.time-number {
+  font-size: 0.95em;
+  color: #ff6b8d;
+  font-weight: bold;
+}
+
+.time-label {
+  font-size: 0.55em;
+  color: #ff9ab3;
+  margin-top: 2px;
+  letter-spacing: -0.3px;
+}
+
+@keyframes gentle-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+</style>
+
+<script>
+function updateLoveTimer() {
+  const startDate = new Date('2024-12-03T21:00:00');
+  const now = new Date();
+  
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
+  let hours = now.getHours() - startDate.getHours();
+  let minutes = now.getMinutes() - startDate.getMinutes();
+  let seconds = now.getSeconds() - startDate.getSeconds();
+
+  // Adjust negative values
+  if (seconds < 0) { seconds += 60; minutes--; }
+  if (minutes < 0) { minutes += 60; hours--; }
+  if (hours < 0) { hours += 24; days--; }
+  if (days < 0) {
+    const tempDate = new Date(now);
+    tempDate.setMonth(now.getMonth() - 1);
+    days += new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, 0).getDate();
+    months--;
+  }
+  if (months < 0) { months += 12; years--; }
+
+  document.getElementById('timer').innerHTML = `
+    <div class="time-unit">
+      <div class="time-number">${years}</div>
+      <div class="time-label">Yrs</div>
+    </div>
+    <div class="time-unit">
+      <div class="time-number">${months}</div>
+      <div class="time-label">Mths</div>
+    </div>
+    <div class="time-unit">
+      <div class="time-number">${days}</div>
+      <div class="time-label">Days</div>
+    </div>
+    <div class="time-unit">
+      <div class="time-number">${hours}</div>
+      <div class="time-label">Hrs</div>
+    </div>
+    <div class="time-unit">
+      <div class="time-number">${minutes}</div>
+      <div class="time-label">Mins</div>
+    </div>
+    <div class="time-unit">
+      <div class="time-number">${seconds}</div>
+      <div class="time-label">Secs</div>
+    </div>
+  `;
+}
+
+setInterval(updateLoveTimer, 1000);
+updateLoveTimer();
+</script>
 <head>
   <meta charset="UTF-8">
   <title>100 Reasons</title>
